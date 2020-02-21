@@ -52,7 +52,6 @@ def get_camera_capture(name, embedding):
             cv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             curr_frame = Image.fromarray(cv_frame)
            
-            #frame_aligned, prob = mtcnn(curr_frame, return_prob = True)
             bounding_boxes, _ = mtcnn.detect(curr_frame)
 
             curr_name = 'unknown'
@@ -68,9 +67,7 @@ def get_camera_capture(name, embedding):
 
                 aligned = []
                 if frame_cropped is not None:
-                    #frame_cropped.show()
                     frame_cropped = loader(frame_cropped)
-                    #frame_cropped_tensor = frame_cropped.to(device, torch.float) 
                     aligned.append(frame_cropped)
                 if len(aligned) == 1:
                     facenet_start = time.time()
